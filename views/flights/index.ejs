@@ -9,5 +9,14 @@
 </head>
 <body>
   <h1>All Flights</h1>
+  <ul>
+    <% flight.forEach(f => { %>
+    <li><% f.airline %> </li>
+    <li><% f.airport %> </li>
+    <li><% f.flightNo %> </li>
+    <li><% f.departs %> </li>
+    <% }) %>
+    <a href="/">Go Back</a>
+  </ul>
 </body>
 </html>
