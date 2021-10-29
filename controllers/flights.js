@@ -19,14 +19,23 @@ function create(req, res){
   const flight = new Flight(req.body)
   flight.save((err) => {
     if(err) {
-      return res.redirect('flights/new')
+      return res.redirect('/flights/new')
     }
-    res.redirect(`/movies/${flight._id}`)
+    res.redirect(`/flights/${flight._id}`)
+  })
+}
+
+function show(req, res){
+  Flight.findById(req.params.id, function(err, flight){
+    res.render('flights/show', {
+      flight,
+    })
   })
 }
 
 export{
   index,
   newFlight as new,
-  create 
+  create,
+  show
 }
