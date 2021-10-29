@@ -1,0 +1,9 @@
+body {
+  display: grid;
+  justify-content: center;
+  /* align-items: center; */
+}
+img, h1, h2, pre  { 
+  display: flex;
+  justify-self: center;
+}
