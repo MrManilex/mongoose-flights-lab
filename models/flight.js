@@ -2,6 +2,10 @@ import mongoose from "mongoose"
 
 const Schema = mongoose.Schema
 
+const destinationSchema = new Schema({
+  airport: String,
+})
+
 const ticketSchema = new Schema({
 seat: {type: String, match: /[A-F][1-9]\d?/},
 price: {type: Number, min: 0}
@@ -18,7 +22,8 @@ const flightSchema = new Schema({
       return date
     }
   },
-  tickets:[ticketSchema]
+  tickets:[ticketSchema],
+  destinations:[destinationSchema]
 })
 
 const Flight = mongoose.model('Flight', flightSchema)
