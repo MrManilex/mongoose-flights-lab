@@ -4,7 +4,7 @@ function index(req, res){
   Flight.find({}, function(err, flight){
     res.render('flights/index', {
       title: 'All Flights',
-      flight: flight
+      flight
     })
   })
 }
@@ -17,11 +17,13 @@ function newFlight(req, res){
 
 function create(req, res){
   const flight = new Flight(req.body)
-  flight.save((err) => {
+  flight.save(function(err) {
     if(err) {
+      console.log(err)
       return res.redirect('/flights/new')
     }
-    res.redirect(`/flights/${flight._id}`)
+    res.redirect('/flights')
+    console.log('it worked yay')
   })
 }
 

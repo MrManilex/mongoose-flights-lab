@@ -2,8 +2,7 @@
 <link rel="stylesheet" href="/stylesheets/flights/index.css">
 <%- include('../partials/nav')  %>
 
-</head>
-<body>
+<main>
   <h1>All Flights</h1>
   <ul>
     <% flight.forEach(f => { %>
@@ -13,5 +12,6 @@
     <li><%= f.departs %> </li>
     <% }) %>
   </ul>
+</main>
 
   <%- include('../partials/footer')  %> 
