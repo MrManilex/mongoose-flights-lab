@@ -5,7 +5,7 @@
 <main>
   <h2>Flight Details</h2>
   <h3><%= flight.airline %>, <%= flight.airport %> </h3>
-  <form action="/flights/<%= flight._id %>/destinations" method="POST">
+  <form action="/flights/<%= flight._id %>/destination" method="POST">
     <select name="destinationId">
       <%- destination.map(d => 
         `<option value="${d._id}">${d.airport}</option>`

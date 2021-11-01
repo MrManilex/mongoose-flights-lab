@@ -14,6 +14,8 @@ router.get('/:id', flightsCtrl.show)
 
 router.post('/:id/ticket', flightsCtrl.createTicket)
 
+router.post('/:id/destination', flightsCtrl.addDestiny)
+
 export {
   router
 }
