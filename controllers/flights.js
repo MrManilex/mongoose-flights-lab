@@ -1,4 +1,5 @@
 import { Flight } from '../models/flight.js'
+import { Destination } from '../models/destination.js'
 
 function index(req, res){
   Flight.find({}, function(err, flight){
@@ -26,10 +27,15 @@ function create(req, res){
 }
 
 function show(req, res){
-  Flight.findById(req.params.id, function(err, flight){
-    res.render('flights/show', {
-      title: 'Flight Details',
-      flight
+  Flight.findById(req.params.id)
+  .populate('destinations')
+  .exec(function(err, flight) {
+    Destination.find({_id: {$nin: flight.destinations}}, function(err, destination) {
+      res.render('flights/show', {
+        title: 'Flight Detail',
+        flight,
+        destination
+      })
     })
   })
 }
