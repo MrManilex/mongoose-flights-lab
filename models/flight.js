@@ -2,10 +2,6 @@ import mongoose from "mongoose"
 
 const Schema = mongoose.Schema
 
-const destinationSchema = new Schema({
-  airport: String,
-})
-
 const ticketSchema = new Schema({
 seat: {type: String, match: /[A-F][1-9]\d?/},
 price: {type: Number, min: 0}
@@ -23,7 +19,7 @@ const flightSchema = new Schema({
     }
   },
   tickets:[ticketSchema],
-  destinations:[destinationSchema]
+  destinations:[{type: Schema.Types.ObjectId, ref: 'Destination'}]
 })
 
 const Flight = mongoose.model('Flight', flightSchema)

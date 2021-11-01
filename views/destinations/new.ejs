@@ -2,10 +2,28 @@
 <link rel="stylesheet" href="/stylesheets/destinations/index.css">
 <%- include('../partials/nav')  %>
 
+<main>
+  <h1>Add New Destination</h1>
+  <form id="new-form" action="/destinations/new" method="POST">
 
+    <label for="destination-select">Destination:</label>
+    <select name="airport" id="destination-select">
+      <option value="LAS">LAS</option>
+      <option value="MIA">MIA</option>
+      <option value="IAH">IAH</option>
+      <option value="JFK">JFK</option>
+      <option value="SFO">SFO</option>
+      <option value="BOS">BOS</option>
+    </select>
 
-<h1>Add a Destination</h1>
+    <button type="submit">Add Destination</button>
+  </form>
 
-
+  <h2>Destinations Added:</h2>
+  <ul>
+    <li><%=  %> </li>
+  </ul>
+  
+</main>
 
 <%- include('../partials/footer')  %> 
