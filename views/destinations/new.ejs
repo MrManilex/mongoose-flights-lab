@@ -6,7 +6,7 @@
   <h1>Add New Destination</h1>
   <form id="new-form" action="/destinations/new" method="POST">
 
-    <label for="destination-select">Destination:</label>
+    <!-- <label for="destination-select">Destination:</label> -->
     <select name="airport" id="destination-select">
       <option value="LAS">LAS</option>
       <option value="MIA">MIA</option>
@@ -21,7 +21,9 @@
 
   <h2>Destinations Added:</h2>
   <ul>
-    <li><%=  %> </li>
+    <% destinations.forEach(destiny => { %>
+      <li><%= destiny.airport %> </li>
+    <% }) %>
   </ul>
   
 </main>

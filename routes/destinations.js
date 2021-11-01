@@ -4,6 +4,8 @@ const router = Router()
 
 router.get('/new', destinationCtrl.new)
 
+router.post('/new', destinationCtrl.create)
+
 export{
   router
 }
