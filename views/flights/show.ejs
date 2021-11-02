@@ -5,14 +5,22 @@
 <main>
   <h2>Flight Details</h2>
   <h3><%= flight.airline %>, <%= flight.airport %> </h3>
-  <form action="/flights/<%= flight._id %>/destination" method="POST">
-    <select name="destinationId">
-      <%- destination.map(d => 
-        `<option value="${d._id}">${d.airport}</option>`
-      ).join('') %>
-    </select>
-    <button type="submit">Add Destination</button>
-  </form>
+
+  <% if (flight.destinations.length < 1) { %>
+    <form action="/flights/<%= flight._id %>/destination" method="POST">
+      <select name="destinationId">
+        <%- destination.map(d => 
+          `<option value="${d._id}">${d.airport}</option>`
+        ).join('') %>
+      </select>
+      <button type="submit">Add Destination</button>
+    </form>
+  <% } else {%>
+    <%- flight.destinations.map(d => 
+    `<p>Destination: ${d.airport}</p>`
+    ) %>
+  <% } %> 
+
   <p>Flight Number: <%= flight.flightNo %> </p>
   <p>Departs: <%= flight.departs %> </p>
   <form action="/flights/<%= flight._id %>/ticket" method="POST">
