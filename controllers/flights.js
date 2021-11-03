@@ -17,11 +17,17 @@ function newFlight(req, res){
 }
 
 function create(req, res){
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key]
+  }
   const flight = new Flight(req.body)
   flight.save(function(err) {
     if(err) {
+      console.log(err)
+      console.log(req.body)
       return res.redirect('/flights/new')
     }
+    console.log(req.body)
     res.redirect('/flights')
   })
 }
